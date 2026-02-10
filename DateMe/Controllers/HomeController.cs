@@ -11,5 +11,17 @@ namespace DateMe.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult DatingApplication()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult DatingApplication(Application application)
+        {
+            return View("Confirmation", application);
+        }
     }
 }
