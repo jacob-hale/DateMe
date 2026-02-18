@@ -9,30 +9,38 @@
     
     <form method="post">
         <label asp-for ="FirstName">First Name: </label>
-        <input asp-for="FirstName"/>
+        <input asp-for="FirstName" required/>
         <br />
         <label asp-for="LastName">Last Name: </label>
-        <input asp-for="LastName">
+        <input asp-for="LastName" required />
         <br />
 
         <label asp-for="Age">Age: </label>
-        <input asp-for="Age" />
+        <input asp-for="Age" required />
         <br />
 
         <label asp-for="PhoneNumber">Phone: </label>
-        <input asp-for="PhoneNumber"/>
+        <input asp-for="PhoneNumber" required />
         <br />
 
         <label asp-for="Major">Major: </label>
-        <input asp-for="Major" />
+        <select asp-for="MajorId">
+            <options value="">Select a Major</options>
+            @foreach (Major m in ViewBag.Majors)
+            {
+                <option value="@m.MajorId">@m.MajorName</option>
+            }
+)
+        </select>
+
         <br />
 
         <label asp-for="Occupation">Occupation: </label>
-        <input asp-for="Occupation" />
+        <input asp-for="Occupation" required />
         <br />
 
         <label asp-for="CreeperStalker">are you a Creeper and/or Stalker?</label>
-        <select asp-for="CreeperStalker">
+        <select asp-for="CreeperStalker" required>
              <option value="true">Yes</option>
              <option value="false">No</option>
         </select>

@@ -20,6 +20,7 @@ namespace DateMe.Controllers
         [HttpGet]
         public IActionResult DatingApplication()
         {
+            ViewBag.Majors = _context.Majors.OrderBy(x => x.MajorName).ToList();
             return View();
 
         }
@@ -32,6 +33,15 @@ namespace DateMe.Controllers
             _context.SaveChanges(); // save changes to database
 
             return View("Confirmation", application);
+        }
+
+        public IActionResult WaitList()
+        {
+            var applications = _context.Applications
+                .Where(x => x.CreeperStalker == false)
+                .OrderBy(x => x.LastName).ToList();
+
+            return View(applications);
         }
     }
 }
